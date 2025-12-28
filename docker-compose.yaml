@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    command: uv run -m app.api_v1.main
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  test:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - db
+    entrypoint: sh -c 'pytest -q'
+
+volumes:
+  db-data:

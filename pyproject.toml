@@ -1,0 +1,15 @@
+[project]
+name = "ecom"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncpg>=0.31.0",
+    "dotenv>=0.9.9",
+    "fastapi>=0.127.0",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "python-multipart>=0.0.21",
+    "uvicorn>=0.40.0",
+]
